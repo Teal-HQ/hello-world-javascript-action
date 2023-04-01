@@ -4,7 +4,7 @@ const github = require('@actions/github');
 try {
   const prDescription = core.getInput('pr-description');
   console.log("PR Desc: " + prDescription);
-  const trelloRegex = /^https:\/\/trello\.com\/c\/([A-Za-z0-9]+)$/;
+  const trelloRegex = /^https:\/\/trello\.com\/c\/[A-Za-z0-9]/;
   const matches = prDescription.match(trelloRegex);
   if (matches) {
     console.log("We have a regex match for a Trello URL!");
