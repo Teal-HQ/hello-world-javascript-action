@@ -1,13 +1,12 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  pr-description:  # description of pull request input
+    description: 'description of pull request input'
     required: true
-    default: 'World'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  is-included: # bool
+    description: 'Boolean: Is there a Trello URL and is it found on Trello.com?'
 runs:
   using: 'node16'
   main: 'index.js'
