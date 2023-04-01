@@ -1,23 +1,23 @@
 # Hello world javascript action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+Validates if a trello card URL is found in the PR description and that card is found on Trello.com
 
 ## Inputs
 
-### `who-to-greet`
+### `pr-description`
 
 **Required** The name of the person to greet. Default `"World"`.
 
 ## Outputs
 
-### `time`
+### `is-included`
 
-The time we greeted you.
+A boolean that is only true if a trello card URL is found and that card is found on Trello.com
 
 ## Example usage
 
 ```yaml
 uses: actions/hello-world-javascript-action@v1.1
 with:
-  who-to-greet: 'Mona the Octocat'
+  pr-description: ${{ github.event.pull_request.body }}
 ```
