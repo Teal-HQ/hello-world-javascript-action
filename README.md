@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: Fetch results of Trello Search
         id: fetch
-        uses: teal-hq/hello-world-javascript-action@v1.9
+        uses: teal-hq/trello-card-in-pr-validator-action@v1.9
         with:
           pr-description: ${{ github.event.pull_request.body }}
           trello-api-key: ${{ secrets.TRELLO_API_KEY }}
