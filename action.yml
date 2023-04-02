@@ -7,7 +7,9 @@ inputs:
   trello-api-key:
     description: 'trello api key'
     required: true
-    default: ${{ secrets.TRELLO_API_KEY }}
+  trello-api-token:
+    description: 'trello api key'
+    required: true
 outputs:
   is-included: # bool
     description: 'Boolean: Is there a Trello URL and is it found on Trello.com?'
