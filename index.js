@@ -2,14 +2,18 @@ const core = require('@actions/core');
 const fetch = require("node-fetch");
 
 try {
-  const prDescription = core.getInput('pr-description');
+  const prDescription = core.getInput('pr-description', {required: true });
+  const trelloApiKey = core.getInput('trello-api-key', { required: true });
+  const trelloApiToken = core.getInput('trello-api-token', { required: true });
+
   console.log("PR Desc: " + prDescription);
-  const trelloRegex = /https:\/\/trello\.com\/c\/[A-Za-z0-9]/;
+  const trelloRegex = /https:\/\/trello\.com\/c\/([A-Za-z0-9]+)/;
   const matches = prDescription.match(trelloRegex);
   if (matches) {
     console.log("We have a regex match for a Trello URL!");
     const cardId = matches[1];
-    const trelloUrl = `https://api.trello.com/1/cards/${cardId}?fields=name&key=${process.env.TRELLO_API_KEY}&token=${process.env.TRELLO_API_TOKEN}`;
+    console.log("Card ID: " + cardId);
+    const trelloUrl = `https://api.trello.com/1/cards/${cardId}?fields=name&key=${trelloApiKey}&token=${trelloApiToken}`;
     fetch(trelloUrl)
       .then(response => response.json())
       .then(data => {

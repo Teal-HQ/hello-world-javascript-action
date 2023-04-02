@@ -4,6 +4,10 @@ inputs:
   pr-description:  # description of pull request input
     description: 'description of pull request input'
     required: true
+  trello-api-key:
+    description: 'trello api key'
+    required: true
+    default: ${{ secrets.TRELLO_API_KEY }}
 outputs:
   is-included: # bool
     description: 'Boolean: Is there a Trello URL and is it found on Trello.com?'
