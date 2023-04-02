@@ -1,7 +1,7 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Verify Trello URL in PR'
+description: 'Action to verify that there is at least one Trello URL in the PR description'
 inputs:
-  pr-description:  # description of pull request input
+  pr-description:
     description: 'description of pull request input'
     required: true
   trello-api-key:

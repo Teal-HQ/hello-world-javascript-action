@@ -5,8 +5,6 @@ try {
   const prDescription = core.getInput('pr-description', {required: true });
   const trelloApiKey = core.getInput('trello-api-key', { required: true });
   const trelloApiToken = core.getInput('trello-api-token', { required: true });
-
-  console.log("PR Desc: " + prDescription);
   const trelloRegex = /https:\/\/trello\.com\/c\/([A-Za-z0-9]+)/;
   const matches = prDescription.match(trelloRegex);
   if (matches) {
@@ -20,7 +18,7 @@ try {
         if (data.name) {
           console.log(`Trello story "${data.name}" is valid`);
         } else {
-          console.log('Trello story is not valid');
+          console.log('Trello story was not found on Trello.com');
           process.exit(1);
         }
       })
