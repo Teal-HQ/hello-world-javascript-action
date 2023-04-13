@@ -1,0 +1,11 @@
+{
+  "pull_request": {
+    "body": "sample description. https://trello.com/c/C9O5SqOy/1783-create-widget-form is the Trello URL.",
+    "head": {
+      "ref": "sample-head-ref"
+    },
+    "base": {
+      "ref": "sample-base-ref"
+    }
+  }
+}

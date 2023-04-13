@@ -1,0 +1,22 @@
+name: My Test Workflow
+on:
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  trello_job:
+    runs-on: ubuntu-latest
+    name: Verify Trello URL in PR
+    steps:
+      - name: Local Checkout
+        id: checkout
+        uses: actions/checkout@v3
+      - name: Fetch results of Trello Search
+        id: fetch
+        uses: ./
+        with:
+          pr-description: ${{ github.event.pull_request.body }}
+          trello-api-key: ${{ secrets.TRELLO_API_KEY }}
+          trello-api-token: ${{ secrets.TRELLO_API_TOKEN }}
+      - name: Get the results
+        run: echo "The trello inclusion test results were ${{ steps.fetch.outputs.is-included }}"

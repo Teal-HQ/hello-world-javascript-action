@@ -24,11 +24,17 @@ Trello authenticates its API using it's PowerUp System.
 To generate your own powerup, and credentials, see: https://trello.com/power-ups/admin.
 
 
-## Outputs
+## Testing Locally
 
-### `is-included`
+### Use Act
 
-A boolean that is only true if a trello card URL is found and that card is found on Trello.com.
+Use the [Act](https://github.com/nektos/act) tool to test locally.  Act requires Docker.
+
+Once Done, from the root of this repo you can tun with:
+
+```
+act pull_request -e example_bodies/body_with_valid_url.json -s TRELLO_API_KEY=FILL-IN -s TRELLO_API_TOKEN=FILL-IN
+```
 
 ## Example usage in your github workflow
 

@@ -1,0 +1,11 @@
+{
+  "pull_request": {
+    "body": "sample description.",
+    "head": {
+      "ref": "sample-head-ref"
+    },
+    "base": {
+      "ref": "sample-base-ref"
+    }
+  }
+}

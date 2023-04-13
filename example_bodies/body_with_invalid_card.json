@@ -1,0 +1,11 @@
+{
+  "pull_request": {
+    "body": "sample description. https://trello.com/c/sushi/dingbat is the Invalid Trello URL.",
+    "head": {
+      "ref": "sample-head-ref"
+    },
+    "base": {
+      "ref": "sample-base-ref"
+    }
+  }
+}

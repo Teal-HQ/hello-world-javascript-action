@@ -1,5 +1,5 @@
-const core = require('@actions/core');
-const fetch = require("node-fetch");
+import core from "@actions/core";
+import fetch from "node-fetch";
 
 try {
   const prDescription = core.getInput('pr-description', {required: true });
