@@ -1,20 +1,25 @@
-import core from "@actions/core";
-import fetch from "node-fetch";
+import core from '@actions/core';
+import fetch from 'node-fetch';
 
 try {
-  const prDescription = core.getInput('pr-description', {required: true });
+  const prDescription = core.getInput('pr-description', { required: true });
   const trelloApiKey = core.getInput('trello-api-key', { required: true });
   const trelloApiToken = core.getInput('trello-api-token', { required: true });
   const trelloRegex = /https:\/\/trello\.com\/c\/([A-Za-z0-9]+)/;
   const matches = prDescription.match(trelloRegex);
   if (matches) {
-    console.log("We have a regex match for a Trello URL!");
+    if (process.env.GITHUB_HEAD_REF?.startsWith('dependabot/')) {
+      console.log('Ignoring dependabot PR');
+      process.exit(0);
+    }
+
+    console.log('We have a regex match for a Trello URL!');
     const cardId = matches[1];
-    console.log("Card ID: " + cardId);
+    console.log('Card ID: ' + cardId);
     const trelloUrl = `https://api.trello.com/1/cards/${cardId}?fields=name&key=${trelloApiKey}&token=${trelloApiToken}`;
     fetch(trelloUrl)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         if (data.name) {
           console.log(`Trello story "${data.name}" is valid`);
         } else {
@@ -22,7 +27,7 @@ try {
           process.exit(1);
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
         process.exit(1);
       });
